@@ -1,0 +1,33 @@
+{
+  "name": "todo-list-backend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "express.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Mbalcorta/todo-list-backend.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Mbalcorta/todo-list-backend/issues"
+  },
+  "scripts": {
+    "start" : "node server.js",
+    "start:dev": "export NODE_ENV=dev && nodemon ./server.js",
+    "createtest:db" : "createdb todolisttest",
+    "loadtest:db": "psql todolisttest < ./db/schema.sql",
+    "inittest:db": "npm run createtest:db && npm run loadtest:db",
+    "create:db": "createdb todolist",
+    "drop:db": "dropdb todolist",
+    "load:db": "psql todolist < ./db/schema.sql",
+    "seed:db": "psql todolist < ./db/seed.sql",
+    "init:db": "npm run create:db && npm run load:db",
+    "test": "export NODE_ENV='test' && mocha"
+},
+  "homepage": "https://github.com/Mbalcorta/todo-list-backend#readme"
+}
