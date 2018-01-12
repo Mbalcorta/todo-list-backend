@@ -1,47 +1,39 @@
 const express = require('express')
-const router = express.Router()
-const task = require('../../../Models/tasks')
-const { getAllData } = require('../../../Test/utilities/dbUtilities')
+const app = express()
+// const router = express.Router()
+const task = require('./Models/tasks')
+const { getAllData } = require('./Test/utilities/dbUtilities')
+const bodyParser = require('body-parser')
 
-router.get('/getBooks', (req, res) => {
+app.use(bodyParser.json())
+
+app.get('/getBooks', (req, res) => {
   return getAllData()
     .then(task => {
-      console.log(task)
       res.json(task)
     })
 })
 
-router.post('/create', (req, res) => {
+app.post('/create', (req, res) => {
   const { todoItem } = req.body
   return task.create(todoItem)
     .then((task) => {
-      console.log(task)
       res.json(task)
     })
     .catch(console.error)
 })
 
-router.put('/update/:id', (req, res) => {
+app.put('/update/:id', (req, res) => {
   const { id } = req.params
-  const { task, complete } = req.body
-  task.updateTask(id, task, complete)
+  const { todoItem, complete } = req.body
+  task.update(id, todoItem, complete)
     .then(task => {
       res.json(task)
     })
     .catch(console.error)
 })
 
-router.put('/edit/:id', (req, res) => {
-  const { id } = req.params
-  const { task, complete } = req.body
-  task.updateTask(id, task, complete)
-    .then(task => {
-      res.json(task)
-    })
-    .catch(console.error)
-})
-
-router.delete('/delete/:id', (req, res) => {
+app.delete('/delete/:id', (req, res) => {
   const { id } = req.params
   return task.delete(id)
     .then(task => {
@@ -50,4 +42,10 @@ router.delete('/delete/:id', (req, res) => {
     .catch(console.error)
 })
 
-module.exports = router
+const port = process.env.PORT || 3000;
+
+app.listen(port, () => {
+  console.log(`The app is listening on port ${port}`);
+});
+
+// module.exports = router
