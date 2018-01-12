@@ -8,7 +8,7 @@ const bodyParser = require('body-parser')
 
 app.use(bodyParser.json())
 
-app.get('/getBooks', (req, res) => {
+app.get('/getTasks', (req, res) => {
   return getAllData()
     .then(task => {
       res.json(task)
