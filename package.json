@@ -28,6 +28,7 @@
   },
   "homepage": "https://github.com/Mbalcorta/todo-list-backend#readme",
   "dependencies": {
+    "dotenv": "^4.0.0",
     "express": "^4.16.2",
     "pg-promise": "^7.3.3"
   }
