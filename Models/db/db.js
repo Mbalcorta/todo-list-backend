@@ -1,8 +1,13 @@
 const pgp = require('pg-promise')({noWarnings: true})
 
-const connection = process.env.NODE_ENV === 'test'
-? "postgres://localhost:5432/todolisttest"
-: process.env.DATABASE_URL;
+let connection
+if(process.env.NODE_ENV === 'test') {
+  connection = "postgres://localhost:5432/todolisttest"
+} else {
+  connection = process.env.DATABASE_URL
+}
+
+console.log('2@@@@@@@', connection )
 
 const db = pgp(connection)
 
