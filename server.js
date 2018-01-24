@@ -43,7 +43,7 @@ app.delete('/delete/:id', (req, res) => {
     .catch(console.error)
 })
 
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 3001;
 
 app.listen(port, () => {
   console.log(`The app is listening on port ${port}`);
