@@ -14,7 +14,7 @@
     "load:db": "psql todolist < ./db/schema.sql",
     "seed:db": "psql todolist < ./db/seed.sql",
     "init:db": "npm run create:db && npm run load:db",
-    "test": "export NODE_ENV='test' && mocha"
+    "test": "export NODE_ENV=test && mocha"
   },
   "repository": {
     "type": "git",
